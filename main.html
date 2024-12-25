@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Celebration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #19711c;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        header {
+            padding: 20px;
+            font-size: 2rem;
+            color: gold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .decorations {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .decorations img {
+            width: 400px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            padding: 10px;
+            font-size: 0.8rem;
+        }
+
+        /* Snow animation */
+        .snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1.5rem;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .tree {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            animation: moveTree 5s infinite alternate;
+        }
+
+        .santa {
+            position: absolute;
+            bottom: 50px;
+            right: 20px;
+            animation: moveSanta 1s infinite alternate;
+        }
+
+        .reindeer {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 100px;
+            animation: flyReindeer 6s linear infinite;
+        }
+
+        .elves {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: -10px;
+            flex-wrap: wrap;
+        }
+
+        .elf {
+            width: 100px;
+            height: 100px;
+            background: url('imgs/elf.png') no-repeat center/contain;
+            animation: jiggle 1.5s infinite;
+            transform: rotate(var(--rotation, 0deg));
+            position: relative;
+            z-index: var(--z-index, 1);
+        }
+
+        @keyframes jiggle {
+            0% {
+                transform: translateY(0);
+            }
+            10% {
+                transform: translateX(-300px);
+            }
+            20% {
+                transform: translateX(300px);
+            }
+            30% {
+                transform: translateY(-800px);
+            }
+            60% {
+                transform: translateX(-300px);
+            }
+            80% {
+                transform: translateX(300px);
+            }
+        }
+
+        @keyframes moveTree {
+            0% {
+                transform: translate(0, 0) rotate(0);
+            }
+            50% {
+                transform: translate(0, 0) rotate(-50deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(50deg);
+            }
+        }
+
+        @keyframes moveSanta {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100px);
+            }
+        }
+
+        @keyframes flyReindeer {
+            0% {
+                transform: translate(0, 0) rotate(0);
+            }
+            50% {
+                transform: translate(100vw, -100vh) rotate(20deg);
+            }
+        }
+
+        /* New styles for the text box */
+        .card-textbox {
+            background: url('imgs/christmas-card-2.jpg') no-repeat center center;
+            background-size: cover;
+            width: 80%;
+            max-width: 600px;
+            height: 300px;
+            margin: 50px auto;
+            border-radius: 20px;
+            padding: 20px;
+            color: #6c0b0b;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            animation: showCard 10s forwards;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes showCard {
+            0%, 50% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+
+        .card-textbox textarea {
+            width: 70%;
+            height: 90%;
+            background: rgba(255, 255, 255, 0.4);
+            color: black;
+            border: none;
+            padding: 0px;
+            font-size: 0.7rem;
+            resize: none;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="snow">
+        <!-- Generate snowflakes dynamically -->
+        <script>
+            const snowContainer = document.querySelector('.snow');
+            for (let i = 0; i < 100; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.textContent = '*';
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+                snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+                snowflake.style.animationDelay = Math.random() * 5 + 's';
+                snowContainer.appendChild(snowflake);
+            }
+        </script>
+    </div>
+
+    <header>
+        <s>HAPPY NEW YEAR</s> Merry Christmas! 🎄✨
+    </header>
+
+    <div class="main-content">
+        <div class="decorations">
+            <img src="imgs/tree.png" alt="Christmas Tree" class="tree">
+            <img src="imgs/santa.webp" alt="Santa Claus" class="santa">
+            <img src="imgs/reindeer.png" alt="Flying Reindeer" class="reindeer">
+        </div>
+        <div class="elves">
+            <div class="elf" style="--rotation: 0deg; --z-index: 1;"></div>
+            <div class="elf" style="--rotation: -15deg; --z-index: 2;"></div>
+            <div class="elf" style="--rotation: 10deg; --z-index: 3;"></div>
+            <div class="elf" style="--rotation: -20deg; --z-index: 4;"></div>
+            <div class="elf" style="--rotation: 15deg; --z-index: 2;"></div>
+            <div class="elf" style="--rotation: 5deg; --z-index: 1;"></div>
+            <div class="elf" style="--rotation: -10deg; --z-index: 3;"></div>
+            <div class="elf" style="--rotation: 20deg; --z-index: 4;"></div>
+            <div class="elf" style="--rotation: -25deg; --z-index: 2;"></div>
+            <div class="elf" style="--rotation: 30deg; --z-index: 1;"></div>
+            <div class="elf" style="--rotation: -10deg; --z-index: 3;"></div>
+            <div class="elf" style="--rotation: 20deg; --z-index: 4;"></div>
+            <div class="elf" style="--rotation: -25deg; --z-index: 2;"></div>
+            <div class="elf" style="--rotation: 30deg; --z-index: 1;"></div>
+        </div>
+        <audio controls autoplay loop>
+            <source src="royalty-free-music.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+          </audio>
+        <p>Love you Sydney!!!</p>
+
+        <!-- New text box in the center -->
+        <div class="card-textbox">
+            <textarea>Sydney! Merry Christmas! Thank you for such a fantastic year. What a blessing it has been to get to be in a relationship with you for our first FULL calendar year! We went through a lot of ups and downs, and I know there was a lot of uncertainty going into restarting a long(medium)-distance relationship when I moved to New York, but look how far we have come! You are so so lovely and I am feeling endlessly grateful that you are in my life. 
+
+            I am really proud of you Sydney. Throughout the past year I have seen an unbelievably large amount of resilience and strength. Seeing you change and grow through tough transitions, loneliness, recruiting, friends, and all of the frustrating parts of life has been truly inspiring. It is really cool to see how much you invest into solving your problems, even if it makes you cry like when you grinded out that presentation for the BSC interview. I know the upcoming weeks might be a rollercoaster of emotions, but I know you will be able to overcome it like you have everything else. I will always be here for you Sydney, thank you so much for everything.
+
+            Sincerely,
+            Ollie
+            </textarea>
+        </div>
+    </div>
+    
+    <footer>
+        &copy; Copyright 2024, Oliver's Giftcard to Sydney. All Rights Reserved. MIT 2006 Apache 2.0.
+    </footer>
+</body>
+</html>
